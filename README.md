@@ -8,9 +8,9 @@ Tento úkol navazuje na [Piškvorky 4](https://github.com/Czechitas-podklady-WEB
 
 1. Pokud je na tahu křížek, odehraj tah navrhovaný umělou inteligencí z API. Pro kolečko zůstává platit, že za něj hraje uživatel.
 
-   1. Po každém tahu, pokud zatím nikdo nevyhrál ověř, jestli je na tahu křížek.
+   1. Po každém tahu, pokud zatím nikdo nevyhrál, ověř, jestli je na tahu křížek.
 
-   1. Pokud ano, odešli požadavek na API a získej navrhovaný tah. API běží na adrese [https://piskvorky.czechitas-podklady.cz/api/suggest-next-move](https://piskvorky.czechitas-podklady.cz/api/suggest-next-move) a očekává metodu `POST`, hlavičku `Content-type: application/json` a tělo ve formátu JSON. V JSONu musí být objekt s vlastností `board`, kde hodnota je stejné pole, jako ve volání funkce `findWinner` z předchozího úkolu. Objekt dále musí obsahovat vlastnost `player` s hodnotou `'x'` vzhledem k tomu, že chceme návrh tahu pro křížek.
+   1. Pokud ano, odešli požadavek na API a získej navrhovaný tah. API běží na adrese `https://piskvorky.czechitas-podklady.cz/api/suggest-next-move` a očekává metodu `POST`, hlavičku `Content-type: application/json` a tělo ve formátu JSON. V JSONu musí být objekt s vlastností `board`, kde hodnota je stejné pole, jako ve volání funkce `findWinner` z předchozího úkolu. Objekt dále musí obsahovat vlastnost `player` s hodnotou `'x'` vzhledem k tomu, že chceme návrh tahu pro křížek.
 
       <details>
       <summary>
@@ -45,7 +45,7 @@ Tento úkol navazuje na [Piškvorky 4](https://github.com/Czechitas-podklady-WEB
 
       </details>
 
-   1. API vám vrátí souřadnici `x` a `y`. Tu převeďte na `index`. Hodnota `x` odpovídá pořadí sloupce začínající nulou a `y` pak pořadí řádku. Pozice na herní ploše 10x10 v levém horním rohu je tedy `{x: 0, y: 0}` a v pravém dolním rohu `{x: 9, y: 9}` za předpokladu pořadí políček v HTML podle následujícího obrázku. Pro získání indexu se tím pádem pravděpodobně bude hodit vzoreček `const index = x + y * 10`.
+   1. API ti vrátí souřadnici `x` a `y`. Tu převeď na `index`. Hodnota `x` odpovídá pořadí sloupce začínající nulou a `y` pak pořadí řádku. Pozice na herní ploše 10x10 v levém horním rohu je tedy `{x: 0, y: 0}`, v levém dolním rohu `{x: 0, y: 9}` a v pravém dolním rohu `{x: 9, y: 9}` za předpokladu pořadí políček v HTML podle následujícího obrázku. Pro získání indexu se tím pádem pravděpodobně bude hodit vzoreček `const index = x + y * 10`.
 
       ![pořadí](zadani/indexy.png)
 
@@ -57,7 +57,7 @@ Tento úkol navazuje na [Piškvorky 4](https://github.com/Czechitas-podklady-WEB
 
 ### Bonus
 
-- Dotaz na API nějakou dobu trvá. Zařiď, aby během této doby nemohl uživatel klikat na další políčka.
+- Dotaz na API nějakou dobu trvá. Zařiď, aby během čekání na umělou inteligenci nemohl uživatel klikat na další políčka.
 
   1.  Před odstartováním funkce `fetch` nastav všem políčkům `disabled` na `true`.
 
