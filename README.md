@@ -20,27 +20,26 @@ Tento úkol navazuje na [Piškvorky 4](https://github.com/Czechitas-podklady-WEB
       <!-- prettier-ignore -->
       ```js
       const fields = document.querySelectorAll('.board__field')
-      const response = await fetch(
-      	'https://piskvorky.czechitas-podklady.cz/api/suggest-next-move',
-      	{
-      		method: 'POST',
-      		headers: {
-      			'Content-type': 'application/json',
-      		},
-      		body: JSON.stringify({
-      			board: [
-      				'x', 'o', 'x',
-      				'_', 'x', 'o',
-      				'o', 'x', 'o',
-      			],
-      			player: 'x', // Hledá tah pro křížek.
-      		}),
+      fetch('https://piskvorky.czechitas-podklady.cz/api/suggest-next-move', {
+      	method: 'POST',
+      	headers: {
+      		'Content-type': 'application/json',
       	},
-      )
-      const data = await response.json()
-      const { x, y } = data.position // x bude 0 a y bude 1, protože to je jediné volné políčko. x 0 odpovídá prvnímu sloupci a y 1 druhému řádku.
-      const field = fields[x + y * 3] // Najde políčko na příslušné pozici.
-      field.click() // Simuluje kliknutí. Spustí událost `click` na políčku.
+      	body: JSON.stringify({
+      		board: [
+      			'x', 'o', 'x',
+      			'_', 'x', 'o',
+      			'o', 'x', 'o',
+      		],
+      		player: 'x', // Hledá tah pro křížek.
+      	}),
+      })
+      	.then((response) => response.json())
+      	.then((data) => {
+      		const { x, y } = data.position // x bude 0 a y bude 1, protože to je jediné volné políčko. x 0 odpovídá prvnímu sloupci a y 1 druhému řádku.
+      		const field = fields[x + y * 3] // Najde políčko na příslušné pozici.
+      		field.click() // Simuluje kliknutí. Spustí událost `click` na políčku.
+      	})
       ```
 
       </details>
