@@ -1,6 +1,6 @@
 # Úkol: Piškvorky 5/5
 
-Tento úkol navazuje na [Piškvorky 4](https://github.com/Czechitas-podklady-WEB/Ukol-Piskvorky-4). V tomto závěrečném úkolu necháš za křížek hrát umělou inteligenci.
+Tento úkol navazuje na [Piškvorky 4](https://github.com/Czechitas-podklady-WEB/ukol-piskvorky-4). V tomto závěrečném úkolu necháš za křížek hrát umělou inteligenci.
 
 ## Zadání
 
